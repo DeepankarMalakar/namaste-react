@@ -1,0 +1,82 @@
+
+html body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header {
+    display: flex;
+    background-color: whitesmoke;
+    justify-content: space-between;
+    /* border: 1px solid; */
+    /* text-align: center; */
+}
+
+.logo {
+    width: 100px;
+    cursor: pointer;
+    /* mix-blend-mode: color-burn; */
+}
+
+
+.nav-items > ul {
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+}
+
+.nav-items ul li {
+    padding: 15px;
+    margin: 10px;
+    font-size: 17px;
+}
+
+.nav-items ul li:hover {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* body
+Card */
+
+.res-card {
+    width: 220px;
+    height: 380px;
+    padding: 8px;
+    margin: 15px;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+    background-color: whitesmoke;
+}
+
+.res-card h3, h5, span {
+    text-align: center;
+}
+
+.res-card span {
+    display: block;
+    align-items: center;
+}
+
+.res-card h3, h5, span {
+    margin: 10px;
+}
+
+.res-card .res-img {
+    width: 100%;
+    margin: 3px 0;
+    border-radius: 3px;
+}
+
+.res-card:hover {
+    border: 1px solid gray;
+    transform: scale(0.95) translateY(5px);
+    cursor: pointer;
+}
+
+.res-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
