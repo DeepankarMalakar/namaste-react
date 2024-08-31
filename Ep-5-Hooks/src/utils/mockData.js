@@ -89,6 +89,99 @@ const resList = [
         "avgRating": 4.3,
         "parentId": "98493",
         "avgRatingString": "4.3",
+    },
+
+    {
+        "id": "152535",
+        "name": "Baskin Robins",
+        "cloudinaryImageId": "85ccae4e3576f9330af102c46ca85395",
+        "locality": "Hill Cart Road",
+        "areaName": "Sevoke",
+        "costForTwo": "₹400 for two",
+        "cuisines": [
+            "Desserts",
+            "Icecreams",
+            "Shakes"
+        ],
+        "avgRating": 4.5,
+        "parentId": "98493",
+        "avgRatingString": "4.5",
+    },
+
+    {
+        "id": "152535",
+        "name": "Brista Coffee",
+        "cloudinaryImageId": "d8061a234209ddf1bbb00c588a25a478",
+        "locality": "Hill Cart Road",
+        "areaName": "Pradhan Nagar",
+        "costForTwo": "₹300 for two",
+        "cuisines": [
+            "Coffee",
+            "Shakes",
+            "Desserts",
+            "Snacks"
+        ],
+        "avgRating": 4.2,
+        "parentId": "98493",
+        "avgRatingString": "4.2",
+    },
+
+    {
+        "id": "152535",
+        "name": "Star Bucks",
+        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/3/72c40439-ac4f-4aee-a973-0f1455d88550_469202.JPG",
+        "locality": "Hill Cart Road",
+        "areaName": "Sevoke Road",
+        "costForTwo": "₹500 for two",
+        "cuisines": [
+            "Beverages",
+            "Cafe",
+            "Cakes",
+            "Snacks",
+            "Shakes"
+        ],
+        "avgRating": 4.3,
+        "parentId": "98493",
+        "avgRatingString": "4.3",
+    },
+
+    {
+        "id": "152535",
+        "name": "Food Box",
+        "cloudinaryImageId": "lu2vje6ftgvbl3x5cgzh",
+        "locality": "Somewhere",
+        "areaName": "Siliguri",
+        "costForTwo": "Starts From ₹100",
+        "cuisines": [
+            "Asian",
+            "Seafood",
+            "Chinese",
+            "Snacks"
+        ],
+        "avgRating": 4.4,
+        "parentId": "98493",
+        "avgRatingString": "4.4",
+    },
+
+    {
+        "id": "152535",
+        "name": "Koshe Kosha",
+        "cloudinaryImageId": "j2pyi9b1hjzsrwwbm5cz",
+        "locality": "Bidhan Market",
+        "areaName": "Siliguri",
+        "costForTwo": "₹200 for two",
+        "cuisines": [
+            "Fish",
+            "Meat",
+            "Goat",
+            "Curry",
+            "Rice",
+            "Naan",
+            "Paratha"
+        ],
+        "avgRating": 4.4,
+        "parentId": "98493",
+        "avgRatingString": "4.4",
     }
 ]
 

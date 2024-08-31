@@ -2,11 +2,19 @@ import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
 
 const Body = () => {
+
     return (
         <div className="body">
-            <div className="search-bar">
-                <input type="text" placeholder='Search your Craving' />
-                <button>Search</button>
+            <div className="filter">
+                <button 
+                className="filter-btn" 
+                onClick={() => {
+                    // Filter of higher ratings restaurants logic here
+                    const filtering  = resList.filter((res) => res.avgRating > 4.3);
+                    console.log(filtering);
+                    // resList = x;
+                }}
+                >Top Rated Restaurant</button>
             </div>
             <div className="res-container">
                 {/* <RestaurantCard resData={resList[4]} />
