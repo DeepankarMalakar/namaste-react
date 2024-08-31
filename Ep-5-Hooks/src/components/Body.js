@@ -1,7 +1,12 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-
+import React, { useState } from "react";
 const Body = () => {
+
+    // useState hook: it gives super-power to the variable
+    // const [variable, modifiedFunction] = useState(variableData to pass)
+    // here, variable=variableDate
+    const [ filteredResList, setFilteredResList ] = useState(resList);
 
     return (
         <div className="body">
@@ -12,7 +17,7 @@ const Body = () => {
                     // Filter of higher ratings restaurants logic here
                     const filtering  = resList.filter((res) => res.avgRating > 4.3);
                     console.log(filtering);
-                    // resList = x;
+                    setFilteredResList(filtering);
                 }}
                 >Top Rated Restaurant</button>
             </div>
@@ -26,7 +31,7 @@ const Body = () => {
                 {/* <RestaurantCard resName="The Fork in the Road" cuisine="North India, South India, Chinese" rating="⭐⭐⭐⭐" />
                 <RestaurantCard resName="Pizza My Heart" cuisine="Pizza, Sandwiches, Burger" rating="⭐⭐⭐" /> */}
 
-                {resList.map((restaurant) => (<RestaurantCard
+                {filteredResList.map((restaurant) => (<RestaurantCard
                     key={restaurant.id} resData={restaurant} />))}
             </div>
         </div>

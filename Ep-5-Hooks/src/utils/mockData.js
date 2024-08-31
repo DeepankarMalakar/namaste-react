@@ -92,7 +92,7 @@ const resList = [
     },
 
     {
-        "id": "152535",
+        "id": "179548",
         "name": "Baskin Robins",
         "cloudinaryImageId": "85ccae4e3576f9330af102c46ca85395",
         "locality": "Hill Cart Road",
@@ -109,7 +109,7 @@ const resList = [
     },
 
     {
-        "id": "152535",
+        "id": "18934",
         "name": "Brista Coffee",
         "cloudinaryImageId": "d8061a234209ddf1bbb00c588a25a478",
         "locality": "Hill Cart Road",
@@ -127,7 +127,7 @@ const resList = [
     },
 
     {
-        "id": "152535",
+        "id": "23423",
         "name": "Star Bucks",
         "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/3/72c40439-ac4f-4aee-a973-0f1455d88550_469202.JPG",
         "locality": "Hill Cart Road",
@@ -146,7 +146,7 @@ const resList = [
     },
 
     {
-        "id": "152535",
+        "id": "89347",
         "name": "Food Box",
         "cloudinaryImageId": "lu2vje6ftgvbl3x5cgzh",
         "locality": "Somewhere",
@@ -164,7 +164,7 @@ const resList = [
     },
 
     {
-        "id": "152535",
+        "id": "123403",
         "name": "Koshe Kosha",
         "cloudinaryImageId": "j2pyi9b1hjzsrwwbm5cz",
         "locality": "Bidhan Market",
