@@ -25,6 +25,7 @@ import Body from './components/Body.js';
 // - Time to Deliver
 
 const AppLayout = () => {
+    // console.log(<Body />)     React's Vitual DOM: Nothing but an object
     return (
         <div className='app'>
             <Header />

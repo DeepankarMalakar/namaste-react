@@ -439,3 +439,77 @@ Example :
 * Themes and Layouts: Amazon allows users to switch between different themes and layouts, such as dark mode or list/grid views. These preferences are stored in user configurations, dynamically altering the UI.
 * Product Recommendations: The recommendation engine uses configuration data to determine which products to display to users based on their browsing history, purchase history, and other factors.
 * Localization: Amazon supports multiple languages and regions. The UI is dynamically adapted based on the user's language and location preferences, using configuration data to load appropriate content and translations.
+
+# Hooks
+- ```useState()```: Simple Counter Example: 
+```
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import  { useState } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+export default App
+```
+
+# Virtual DOM ~ Detailed
+- ```Virtual DOM``` is like a blueprint for your web page, its the representation of the actual DOM.
+
+Here's a quick breakdown of how it works:
+
+- ```React creates a virtual DOM```: When your React component renders, it creates a virtual DOM representation of the UI.
+- ```Updates```: Whenever something changes (like user interaction or data updates), React creates a new virtual DOM.
+- ```Comparison```: React compares the old and new virtual DOMs to identify the minimal changes needed.
+- ```DOM Updates```: React updates only the necessary parts of the actual DOM, minimizing performance overhead.
+
+- Example:-
+```
+Component:
+
+import React from 'react';
+
+function MyComponent() {
+  return (
+    <div>
+      <h1>Hello, World!</h1>
+      <p>This is a paragraph.</p>
+    </div>
+  );
+}
+
+Virtual DOM for this Component: 
+
+{
+  type: 'div',
+  props: {
+    children: [
+      {
+        type: 'h1',
+        props: {
+          children: 'Hello, World!'
+        }
+      },
+      {
+        type: 'p',
+        props: {
+          children: 'This is a paragraph.'
+        }
+      }
+    ]
+  }
+}
+
+Basically, it creates an object(or React Element) from the actual DOM.
+```
+
+# Why React is fast ?
+- Because, React efficiently manipulates the DOM, It creates a blueprint of your website (called the Virtual DOM). When something changes on your website (like clicking a button), React updates the blueprint(Virtual DOM) and only changes the parts of the actual website that need to be updated. This is much faster than rebuilding the entire website every time something changes.

@@ -3,7 +3,7 @@ import resList from "../utils/mockData";
 import React, { useState } from "react";
 const Body = () => {
 
-    // useState hook: it gives super-power to the variable
+    // useState hook: it gives super-power to the normal variable, it is a powerful state variable
     // const [variable, modifiedFunction] = useState(variableData to pass)
     // here, variable=variableDate
     const [ filteredResList, setFilteredResList ] = useState(resList);
@@ -15,7 +15,7 @@ const Body = () => {
                 className="filter-btn" 
                 onClick={() => {
                     // Filter of higher ratings restaurants logic here
-                    const filtering  = resList.filter((res) => res.avgRating > 4.3);
+                    const filtering  = filteredResList.filter((res) => res.avgRating > 4.3);
                     console.log(filtering);
                     setFilteredResList(filtering);
                 }}
