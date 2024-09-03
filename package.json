@@ -4,8 +4,8 @@
   "description": "Learning React",
   "main": "index.js",
   "scripts": {
-    "start": "parcel Ep-5-Hooks/src/ep5.html",
-    "build": "parcel build Ep-5-Hooks/src/ep5.html",
+    "start": "parcel Practice/practice.html",
+    "build": "parcel build Practice/practice.html",
     "test": "jest"
   },
   "repository": {
