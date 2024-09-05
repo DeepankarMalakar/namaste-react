@@ -12,10 +12,22 @@ function ProductCategoryRow({ category }) {
 }
 
 function ProductRow({ product }) {
-    const name = product.stocked ? product.name :
-        <span style={{ color: 'red' }}>
-            {product.name}
-        </span>;
+    // const name = product.stocked ? product.name :
+    //     <span style={{ color: 'red' }}>
+    //         {product.name}
+    //     </span>;
+    // OR
+    let name;
+
+    if (product.stocked) {
+        name = product.name;
+    } else {
+        name = (
+            <span style={{ color: 'red' }}>
+                {product.name}
+            </span>
+        );
+    }
 
     return (
         <tr>
@@ -26,23 +38,15 @@ function ProductRow({ product }) {
 }
 
 function ProductTable({ products }) {
-    const rows = [];
-    let lastCategory = null;
+    const rows = products.map((product, index) => {
+        const isNewCategory = index === 0 || product.category !== products[index - 1].category;
 
-    products.forEach((product) => {
-        if (product.category !== lastCategory) {
-            rows.push(
-                <ProductCategoryRow
-                    category={product.category}
-                    key={product.category} />
-            );
-        }
-        rows.push(
-            <ProductRow
-                product={product}
-                key={product.name} />
+        return (
+            <>
+                {isNewCategory && <ProductCategoryRow category={product.category} key={product.category} />}
+                <ProductRow product={product} key={product.name} />
+            </>
         );
-        lastCategory = product.category;
     });
 
     return (
@@ -57,7 +61,6 @@ function ProductTable({ products }) {
         </table>
     );
 }
-
 function SearchBar() {
     return (
         <form>
