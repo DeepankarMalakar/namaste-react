@@ -1,41 +1,89 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
-import React, { useState } from "react";
-const Body = () => {
+import { useState, useEffect } from "react";
+// import Shimmer from "./Shimmer";
 
-    // useState hook: it gives super-power to the normal variable, it is a powerful state variable
-    // const [variable, modifiedFunction] = useState(variableData to pass)
-    // here, variable=variableDate
-    const [ filteredResList, setFilteredResList ] = useState(resList);
+const Body = () => {
+    // Local State Variable - Super powerful variable
+    const [listOfRestaurants, setListOfRestraunt] = useState([]);
+    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
+    const [searchText, setSearchText] = useState("");
+
+    // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
+    console.log("Body Rendered");
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        const data = await fetch(
+            "https://www.swiggy.com/mapi/homepage/getCards?lat=26.7271012&lng=88.39528609999999"
+        );
+
+        const jsonData = await data.json();
+        console.log(jsonData?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
+
+        // Optional Chaining
+        setListOfRestraunt(
+            jsonData?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+        );
+        setFilteredRestaurant(
+            jsonData?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+        );
+    };
 
     return (
         <div className="body">
             <div className="filter">
-                <button 
-                className="filter-btn" 
-                onClick={() => {
-                    // Filter of higher ratings restaurants logic here
-                    const filtering  = filteredResList.filter((res) => res.avgRating > 4.3);
-                    console.log(filtering);
-                    setFilteredResList(filtering);
-                }}
-                >Top Rated Restaurant</button>
+                <div className="search">
+                    <input
+                        type="text"
+                        className="search-box"
+                        value={searchText}
+                        onChange={(e) => {
+                            setSearchText(e.target.value);
+                        }}
+                    />
+                    <button className="search-btn"
+                        onClick={() => {
+                            // Filter the restraunt cards and update the UI
+                            // searchText
+                            console.log(searchText);
+
+                            const filteredRestaurant = listOfRestaurants.filter((res) =>
+                                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                            );
+
+                            setFilteredRestaurant(filteredRestaurant);
+                        }}
+                    >
+                        Search
+                    </button>
+                </div>
+                <button
+                    className="filter-btn"
+                    onClick={() => {
+                        const filteredList = listOfRestaurants.filter(
+                            (res) => res.info.avgRating > 4
+                        );
+                        setListOfRestraunt(filteredList);
+                    }}
+                >
+                    Top Rated Restaurants
+                </button>
             </div>
             <div className="res-container">
-                {/* <RestaurantCard resData={resList[4]} />
-                <RestaurantCard resData={resList[3]} />
-                <RestaurantCard resData={resList[2]} />
-                <RestaurantCard resData={resList[1]} />
-                <RestaurantCard resData={resList[0]} /> */}
-
-                {/* <RestaurantCard resName="The Fork in the Road" cuisine="North India, South India, Chinese" rating="⭐⭐⭐⭐" />
-                <RestaurantCard resName="Pizza My Heart" cuisine="Pizza, Sandwiches, Burger" rating="⭐⭐⭐" /> */}
-
-                {filteredResList.map((restaurant) => (<RestaurantCard
-                    key={restaurant.id} resData={restaurant} />))}
+                {listOfRestaurants.length > 0 ? (
+                    filteredRestaurant.map((restaurant) => (
+                        <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                    ))
+                ) : (
+                    <p>Loading restaurants...</p>
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Body;
