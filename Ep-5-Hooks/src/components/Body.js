@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer"
 // import Shimmer from "./Shimmer";
 
 const Body = () => {
@@ -52,7 +53,7 @@ const Body = () => {
                             console.log(searchText);
 
                             const filteredRestaurant = listOfRestaurants.filter((res) =>
-                                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                                res.info.name.toLowerCase().includes(searchText.toLowerCase())
                             );
 
                             setFilteredRestaurant(filteredRestaurant);
@@ -65,7 +66,7 @@ const Body = () => {
                     className="filter-btn"
                     onClick={() => {
                         const filteredList = listOfRestaurants.filter(
-                            (res) => res.info.avgRating > 4
+                            (res) => res.info.avgRating > 4.2
                         );
                         setListOfRestraunt(filteredList);
                     }}
@@ -79,7 +80,7 @@ const Body = () => {
                         <RestaurantCard key={restaurant.info.id} resData={restaurant} />
                     ))
                 ) : (
-                    <p>Loading restaurants...</p>
+                    <Shimmer />
                 )}
             </div>
         </div>
