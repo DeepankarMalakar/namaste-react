@@ -62,11 +62,22 @@ a {
 
 .nav-items li {
     display: inline-block;
-    margin-right: 1rem;
+    margin: 2rem;
 }
 
 .nav-items li a {
     color: #333;
+}
+
+.nav-items button {
+    padding: 10px 30px;
+    background-color: crimson;
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* Body Styles */
