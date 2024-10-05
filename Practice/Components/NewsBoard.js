@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import NewsItem from './NewsItem';
 import { useState } from 'react';
 
-const NewsBoard = () => {
+const NewsBoard = ({category}) => {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        let url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=14c44bf1635740609237f9a11080d3f6`;
+        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=14c44bf1635740609237f9a11080d3f6`;
         fetch(url).then(response => response.json()).then(data => setArticles(data.articles));
-    }, []);
+    }, [category]);
     
     return (
         <div>

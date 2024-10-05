@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navbar = () => {
+const Navbar = ({ setCategory }) => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -11,10 +11,12 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
-                            <a className="nav-link" href="#">Features</a>
-                            <a className="nav-link" href="#">Pricing</a>
-                            {/* <a className="nav-link disabled" aria-disabled="true">Disabled</a> */}
+                            <a className="nav-link text-white" href="#" onClick={() => setCategory("technology")}>Technology</a>
+                            <a className="nav-link text-white" href="#" onClick={() => setCategory("entertainment")}>Entertainment</a>
+                            <a className="nav-link text-white" href="#" onClick={() => setCategory("sports")}>Sports</a>
+                            <a className="nav-link text-white" href="#" onClick={() => setCategory("health")}>Health</a>
+                            <a className="nav-link text-white" href="#" onClick={() => setCategory("science")}>Science</a>
+                            <a className="nav-link text-white" href="#" onClick={() => setCategory("business")}>Business</a>
                         </div>
                     </div>
                 </div>
