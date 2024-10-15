@@ -4,8 +4,8 @@
   "description": "Learning React",
   "main": "index.js",
   "scripts": {
-    "start": "parcel Practice/main.html",
-    "build": "parcel Practice/main.html",
+    "start": "parcel E:/Namaste-react-dm/namaste-react/BrandPage/main.html",
+    "build": "parcel BrandPage/main.html",
     "test": "jest"
   },
   "repository": {
