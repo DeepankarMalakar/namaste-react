@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Header from '../Ep-5-Hooks/src/components/Header.js';
 import Body from '../Ep-5-Hooks/src/components/Body.js';
+import AboutUs from '../Ep-5-Hooks/src/components/AboutUs.js';
+import Contact from '../Ep-5-Hooks/src/components/Contact.js';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 // ** Header section
 // - Logo
@@ -34,6 +37,23 @@ const AppLayout = () => {
     )
 }
 
+const appRoutes = createBrowserRouter(
+    [
+        {
+            path: "/",
+            element: <AppLayout />,
+        },
+        {
+            path: "/about",
+            element: <AboutUs />,
+        },
+        {
+            path: "/contact",
+            element: <Contact />,
+        },
+    ]
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />)
+root.render(<RouterProvider router={appRoutes} />)
