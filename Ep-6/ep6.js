@@ -4,7 +4,8 @@ import Header from '../Ep-5-Hooks/src/components/Header.js';
 import Body from '../Ep-5-Hooks/src/components/Body.js';
 import AboutUs from '../Ep-5-Hooks/src/components/AboutUs.js';
 import Contact from '../Ep-5-Hooks/src/components/Contact.js';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Error from '../Ep-5-Hooks/src/components/Error.js';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 // ** Header section
 // - Logo
@@ -28,11 +29,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // - Time to Deliver
 
 const AppLayout = () => {
-    // console.log(<Body />)     React's Vitual DOM: Nothing but an object or reac
+    // console.log(<Body />)     React's Vitual DOM: Nothing but an object or react component
     return (
         <div className='app'>
             <Header />
-            <Body />
+            <Outlet />
         </div>
     )
 }
@@ -42,14 +43,21 @@ const appRoutes = createBrowserRouter(
         {
             path: "/",
             element: <AppLayout />,
-        },
-        {
-            path: "/about",
-            element: <AboutUs />,
-        },
-        {
-            path: "/contact",
-            element: <Contact />,
+            children: [
+                {
+                    path: "/",
+                    element: <Body />,
+                },
+                {
+                    path: "/about",
+                    element: <AboutUs />,
+                },
+                {
+                    path: "/contact",
+                    element: <Contact />,
+                },
+            ],
+            errorElement: <Error />,
         },
     ]
 )
