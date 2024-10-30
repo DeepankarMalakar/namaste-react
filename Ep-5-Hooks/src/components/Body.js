@@ -16,21 +16,22 @@ const Body = () => {
     useEffect(() => {
         fetchData();
     }, []);
+    
 
     const fetchData = async () => {
         const data = await fetch(
-            "https://www.swiggy.com/mapi/homepage/getCards?lat=26.7271012&lng=88.39528609999999"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
 
         const jsonData = await data.json();
-        console.log(jsonData?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
+        console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
         // Optional Chaining
         setListOfRestraunt(
-            jsonData?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+            jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
         );
         setFilteredRestaurant(
-            jsonData?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+            jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
         );
     };
 
