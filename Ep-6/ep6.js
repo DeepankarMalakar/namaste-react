@@ -6,6 +6,7 @@ import AboutUs from '../Ep-5-Hooks/src/components/AboutUs.js';
 import Contact from '../Ep-5-Hooks/src/components/Contact.js';
 import Error from '../Ep-5-Hooks/src/components/Error.js';
 import Cart from '../Ep-5-Hooks/src/components/Cart.js';
+import RestaurantMenu from '../Ep-5-Hooks/src/components/RestaurantMenu.js';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 // ** Header section
@@ -60,6 +61,10 @@ const appRoutes = createBrowserRouter(
                 {
                     path: "/cart",
                     element: <Cart />,
+                },
+                {
+                    path: "/restaurants/:resId",
+                    element: <RestaurantMenu />,
                 },
             ],
             errorElement: <Error />,
