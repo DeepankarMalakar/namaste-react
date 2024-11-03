@@ -1,32 +1,56 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
+import { MENU_API } from "./Constants";
 
 const RestaurantMenu = () => {
     const [resInfo, setResInfo] = useState(null);
+    const {resId} = useParams();
+    console.log(resId)
 
     useEffect(() => {
         fetchMenu();
     }, [])
 
     const fetchMenu = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=10576&catalog_qa=undefined&submitAction=ENTER");
+        const data = await fetch(
+            MENU_API + resId
+        );
 
         const json = await data.json();
         console.log(json);
         setResInfo(json.data);
     }
 
-    const { name, cuisines, costForTwoMessage, avgRatingString, areaName } = resInfo?.cards[2]?.card?.card?.info || {};
+    if (resInfo === null) return <Shimmer />
+    
 
-    return resInfo === null ? (
-        <Shimmer />
-    ) : (
+    const { name,totalRatingsString, cuisines, costForTwoMessage, avgRatingString, areaName, city, sla } = resInfo?.cards[2]?.card?.card?.info;
+
+    const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    console.log(itemCards);
+
+    return (
+        <>
         <div className="menu">
             <h2>{name}</h2>
-            <h4>{avgRatingString}⭐ - {costForTwoMessage}</h4>
-            <h4>{cuisines}</h4>
-            <span>{areaName}</span>
+            <div className="menu-details">
+            <h3>{avgRatingString}⭐<span id="ratings">({totalRatingsString})</span></h3>
+            <br />
+            <a>{cuisines}</a><span id="cost"> - {costForTwoMessage}</span>
+            <br />
+            <br />
+            <li><span>{areaName}, {city}</span></li>
+            <br />
+            <li><span>{sla.minDeliveryTime} - {sla.maxDeliveryTime} mins</span></li>
+            </div>
         </div>
+        <div className="menu">
+            <p>Menu</p>
+            <ul>{itemCards.map(item => <li key={item.card.info.id}>{item.card.info.name} - {"Rs."}{ item.card.info.price/100 || item.card.info.defaultPrice/100 }</li>)}</ul>
+            {/* <p>{itemCards.map(item => <li>{item.card.info.description}</li>)}</p> */}
+        </div>
+        </>
     );
 }
 
