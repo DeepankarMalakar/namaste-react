@@ -16,7 +16,7 @@ const Body = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    
+
 
     const fetchData = async () => {
         const data = await fetch(
@@ -66,9 +66,8 @@ const Body = () => {
                 <button
                     className="filter-btn"
                     onClick={() => {
-                        const filteredList = listOfRestaurants.filter(
-                            (res) => res.info.avgRating > 4.2
-                        );
+                        const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.0);
+                        console.log(filteredList); // Check the filtered list
                         setListOfRestraunt(filteredList);
                     }}
                 >
@@ -78,7 +77,7 @@ const Body = () => {
             <div className="res-container">
                 {listOfRestaurants.length > 0 ? (
                     filteredRestaurant.map((restaurant) => (
-                        <Link key={restaurant.info.id} to={"restaurants/" + restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
+                        <Link style={{textDecoration: 'none'}} key={restaurant.info.id} to={"restaurants/" + restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
                     ))
                 ) : (
                     <Shimmer />

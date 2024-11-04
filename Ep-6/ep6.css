@@ -67,6 +67,7 @@ a {
 
 .nav-items li a {
     color: #333;
+    text-decoration: none;
 }
 
 .nav-items button {
@@ -131,7 +132,7 @@ a {
 
 /* RestaurantCard Styles */
 
-.res-card {
+/* .res-card {
     padding: 1rem;
     border-radius: 4px;
     background-color: #fff;
@@ -139,7 +140,7 @@ a {
     transition: transform 0.2s ease-in-out;
 }
 
-.res-card:hover{
+.res-card:hover {
     transform: scale(0.95) translateY(5px);
 }
 
@@ -156,7 +157,28 @@ h4 {
 
 .res-card h4 {
     color: #999;
+} */
+
+.card {
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
+
+.card:hover {
+    transform: scale(0.95) translateY(5px);
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* Adjust the number of lines as needed */
+    -webkit-box-orient: vertical;
+}
+
 
 /* Shimmer card  */
 

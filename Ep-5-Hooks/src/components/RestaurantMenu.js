@@ -50,6 +50,9 @@ const RestaurantMenu = () => {
             <ul>{itemCards.map(item => <li key={item.card.info.id}>{item.card.info.name} - {"Rs."}{ item.card.info.price/100 || item.card.info.defaultPrice/100 }</li>)}</ul>
             {/* <p>{itemCards.map(item => <li>{item.card.info.description}</li>)}</p> */}
         </div>
+        <div>
+            <button className="btn btn-warning">Hello</button>
+        </div>
         </>
     );
 }

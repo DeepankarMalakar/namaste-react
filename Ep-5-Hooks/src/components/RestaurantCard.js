@@ -1,4 +1,6 @@
 import { CDN_URL } from "../utils/contents";
+import { Card, CardImg, CardBody, CardTitle, CardText } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 const RestaurantCard = (props) => {
     const { resData } = props;
@@ -7,18 +9,25 @@ const RestaurantCard = (props) => {
         resData?.info;
 
     return (
-        <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-            <img
-                className="res-logo"
-                alt="res-logo"
-                src={CDN_URL + cloudinaryImageId}
-            />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRating} stars⭐</h4>
-            <h4>{costForTwo}</h4>
-            <h4>{sla?.slaString}</h4>
-        </div>
+        <Card style={{ width: '20rem', backgroundColor: "#f0f0f0" }}>
+            <Card.Img variant="top" src={CDN_URL + cloudinaryImageId} />
+            <Card.Body>
+                <Card.Title className="fw-bold">{name}</Card.Title>
+                <Card.Text className="fw-bold text-success">
+                    {cuisines.join(", ")}
+                </Card.Text>
+                <Card.Text className="text-warning fw-bold">
+                    {avgRating} stars ⭐
+                </Card.Text>
+                <Card.Text className="fw-bold">
+                    {costForTwo}
+                </Card.Text>
+                <Card.Text className="text-danger">
+                    {sla?.slaString}
+                </Card.Text>
+                <Button variant="success">Check Out</Button>
+            </Card.Body>
+        </Card>
     );
 };
 
