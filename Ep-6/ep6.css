@@ -236,3 +236,37 @@ h4 {
 .menu #cost {
     font-weight: bold;
 }
+
+.menu-header {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+/* Accordian  */
+.accordion {
+    width: 550px;
+    margin: 10px 0 0 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    /* border: 1px solid gray; */
+}
+
+.eachItem {
+    /* height: 50px; */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.eachItem a {
+    color: green;
+    text-decoration: none;
+}
+
+.eachDescription {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.itemImageContainer img{
+    width: 200px;
+}
