@@ -16,10 +16,17 @@ class UserClass extends React.Component {
         //     count: 0,
         //     count2: 2,
         // };
+        console.log("Child Constructor")
     }
+    componentDidMount() {
+        console.log("Children Component did mount")
+        // We make API calls in componentDidMount on class based component, its like the useEffect() hook given us by react.
+    }
+    
     render() {
         const {name, profile} = this.props
         // const {count, count2} = this.state;
+        console.log("Child Render")
         return (
             <Card style={{ width: '18rem', marginLeft: '1rem', marginTop: '1rem'}}>
                 <Card.Img variant="top" src= {img}/>
