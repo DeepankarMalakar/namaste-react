@@ -25,7 +25,7 @@ const RestaurantCard = (props) => {
                 <Card.Text className="text-danger">
                     {sla?.slaString}
                 </Card.Text>
-                <Button variant="success">Check Out</Button>
+                <Button variant="warning" style={{fontWeight: "bold"}}>Check Out</Button>
             </Card.Body>
         </Card>
     );

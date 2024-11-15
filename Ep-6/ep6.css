@@ -72,8 +72,8 @@ a {
 
 .nav-items button {
     padding: 10px 30px;
-    background-color: crimson;
-    color: #fff;
+    background-color: #FFCA2C;
+    color: #000;
     border-radius: 5px;
     outline: none;
     border: none;
@@ -109,8 +109,8 @@ a {
 .search-btn {
     padding: 8px 8px;
     border-radius: 5px;
-    background-color: crimson;
-    color: #fff;
+    background-color: #FFCA2C;
+    color: #000;
     border: none;
     cursor: pointer;
 }
