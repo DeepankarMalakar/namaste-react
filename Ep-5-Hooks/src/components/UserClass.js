@@ -16,22 +16,41 @@ class UserClass extends React.Component {
         //     count: 0,
         //     count2: 2,
         // };
-        console.log("Child Constructor")
+        // console.log(this.props.name+ " " + "Child Constructor")
+        this.state = {
+            userInfo: {
+                name: "Dummy Name",
+                img: "https: dummyimage.com",
+                bio: "Dummy Bio",
+                company: "Dummy Company",
+            }
+        }
+        // Its like, const [state, setSet] = useState(userInfo); so here we created state variable
     }
-    componentDidMount() {
-        console.log("Children Component did mount")
+    async componentDidMount() {
+        // console.log(this.props.name + " " + "Children Component did mount")
         // We make API calls in componentDidMount on class based component, its like the useEffect() hook given us by react.
+        const data = await fetch("https://api.github.com/users/zen");
+        const json = await data.json();
+
+        // Here, we updated state variable
+        this.setState({
+            userInfo: json,
+        })
+
+        // console.log(json)
     }
     
     render() {
-        const {name, profile} = this.props
+        // const {name, profile} = this.props
         // const {count, count2} = this.state;
-        console.log("Child Render")
+        // console.log(this.props.name + " " + "Child Render")
+        const {login, avatar_url, bio, company} = this.state.userInfo
         return (
             <Card style={{ width: '18rem', marginLeft: '1rem', marginTop: '1rem'}}>
-                <Card.Img variant="top" src= {img}/>
+                <Card.Img variant="top" src= {avatar_url}/>
                 <Card.Body>
-                    <Card.Title>{name} (CEO)</Card.Title>
+                    <Card.Title>{login} - {company}</Card.Title>
 
                     {/* <span>{this.state.count}</span> */}
                     {/* <span>{count}</span> */}
@@ -42,10 +61,9 @@ class UserClass extends React.Component {
                     })}>Increment</button> */}
 
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
+                        {bio}
                     </Card.Text>
-                    <Button variant="warning">{profile}</Button>
+                    <Button variant="warning">Profile</Button>
                 </Card.Body>
             </Card>
         )

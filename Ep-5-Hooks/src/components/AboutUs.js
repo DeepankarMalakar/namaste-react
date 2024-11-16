@@ -18,7 +18,9 @@ class AboutUs extends React.Component {
             <>
                 <div className="about-us">
                     <div className="about-profile">
-                        <UserClass name = {"Lorem Ipsum"} profile = {"Profile"} />
+                        <UserClass />  {/*First child Component*/}
+                        {/* <UserClass name = {"John Dae"} profile = {"Profile"} /> */}  {/*Second child Component*/}
+                        {/* <UserClass name = {"John Dae"} profile = {"Profile"} /> */}  {/*Third child Component*/}
                     </div>
                     <div className="about-description">
                         <h1><span>Food</span> App</h1>
