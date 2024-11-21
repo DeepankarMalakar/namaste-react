@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import useRestaurantCard from "./useRestaurantCard";
+import useOnlineStatus from "./useOnlineStatus";
 
 const Body = () => {
     // Destructure the returned object from the custom hook
@@ -22,6 +23,10 @@ const Body = () => {
         const topRatedList = listOfRestaurants.filter((res) => res.info.avgRating >= 4.5);
         setFilteredRestaurant(topRatedList);  // Update filtered restaurant state
     };
+    
+    // Online or offline status using custom hook
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus == false) return (<h1>Please Check your internet connection and try again!</h1>)
 
     return (
         <div className="body">
