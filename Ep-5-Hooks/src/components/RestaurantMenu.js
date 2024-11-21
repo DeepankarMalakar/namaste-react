@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "./Constants";
 import { IMAGE_URL } from "./Constants";
+import Shimmer from "./Shimmer";
 import Accordion from 'react-bootstrap/Accordion';
+import useRestaurantMenu from "./useRestaurantMenu";
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
+    // const [resInfo, setResInfo] = useState(null);
     const { resId } = useParams();
 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
+    const resInfo = useRestaurantMenu(resId)    // Created custom hook to fetch menu "useRestaurantMenu"
 
-    const fetchMenu = async () => {
-        const data = await fetch(MENU_API + resId);
-        const json = await data.json();
-        setResInfo(json.data);
-    };
+    // useEffect(() => {
+    //     fetchMenu();
+    // }, []);
+
+    // const fetchMenu = async () => {
+    //     const data = await fetch(MENU_API + resId);
+    //     const json = await data.json();
+    //     setResInfo(json.data);
+    // };
 
     if (resInfo === null) return <Shimmer />;
 

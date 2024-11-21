@@ -1,38 +1,26 @@
+import { useState } from "react";
+import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom";
+import useRestaurantCard from "./useRestaurantCard";
 
 const Body = () => {
-    // Local State Variable - Super powerful variable
-    const [listOfRestaurants, setListOfRestraunt] = useState([]);
-    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
+    // Destructure the returned object from the custom hook
+    const { listOfRestaurants, filteredRestaurant, setFilteredRestaurant } = useRestaurantCard();
     const [searchText, setSearchText] = useState("");
 
-    // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
-    console.log("Body Rendered");
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-
-    const fetchData = async () => {
-        const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    // Handle search functionality
+    const handleSearch = () => {
+        const filteredList = listOfRestaurants.filter((res) =>
+            res.info.name.toLowerCase().includes(searchText.toLowerCase())
         );
+        setFilteredRestaurant(filteredList);  // Update filtered restaurant state
+    };
 
-        const jsonData = await data.json();
-        console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
-        // Optional Chaining
-        setListOfRestraunt(
-            jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        );
-        setFilteredRestaurant(
-            jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        );
+    // Handle top rated restaurants filter
+    const handleTopRatedFilter = () => {
+        const topRatedList = listOfRestaurants.filter((res) => res.info.avgRating >= 4.5);
+        setFilteredRestaurant(topRatedList);  // Update filtered restaurant state
     };
 
     return (
@@ -43,44 +31,29 @@ const Body = () => {
                         type="text"
                         className="search-box"
                         value={searchText}
-                        onChange={(e) => {
-                            setSearchText(e.target.value);
-                        }}
+                        onChange={(e) => setSearchText(e.target.value)}  // Update search text state
                     />
-                    <button className="search-btn"
-                        onClick={() => {
-                            // Filter the restraunt cards and update the UI
-                            // searchText
-                            console.log(searchText);
-
-                            const filteredRestaurant = listOfRestaurants.filter((res) =>
-                                res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                            );
-
-                            setFilteredRestaurant(filteredRestaurant);
-                        }}
-                    >
+                    <button className="search-btn" onClick={handleSearch}>
                         Search
                     </button>
                 </div>
-                <button
-                    className="filter-btn"
-                    onClick={() => {
-                        const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.0);
-                        console.log(filteredList); // Check the filtered list
-                        setListOfRestraunt(filteredList);
-                    }}
-                >
+                <button className="filter-btn" onClick={handleTopRatedFilter}>
                     Top Rated Restaurants
                 </button>
             </div>
             <div className="res-container">
-                {listOfRestaurants.length > 0 ? (
-                    filteredRestaurant.map((restaurant) => (
-                        <Link style={{textDecoration: 'none'}} key={restaurant.info.id} to={"restaurants/" + restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
-                    ))
+                {listOfRestaurants.length === 0 ? (
+                    <Shimmer />  // Show shimmer while data is loading
                 ) : (
-                    <Shimmer />
+                    filteredRestaurant.map((restaurant) => (
+                        <Link
+                            key={restaurant.info.id}
+                            to={`restaurants/${restaurant.info.id}`}
+                            style={{ textDecoration: "none" }}
+                        >
+                            <RestaurantCard resData={restaurant} />
+                        </Link>
+                    ))
                 )}
             </div>
         </div>
