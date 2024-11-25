@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const RestaurantCard = (props) => {
     const { resData } = props;
 
-    const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
+    const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla, header, subHeader } =
         resData?.info;
 
     return (
@@ -30,5 +30,19 @@ const RestaurantCard = (props) => {
         </Card>
     );
 };
+
+// Higher Order function :
+// that will take an input RestaurantCard and will return the enhanced RestaurantCard i.e withRestaurantCardOffer
+
+export const withRestaurantCardOffer = (RestaurantCard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="relative bg-black text-white p-1 top-5">{props.resData.info.aggregatedDiscountInfoV3.header}{props.resData.info.aggregatedDiscountInfoV3.subHeader}</label>
+                <RestaurantCard {...props}/>
+            </div>
+        )
+    }
+}
 
 export default RestaurantCard;

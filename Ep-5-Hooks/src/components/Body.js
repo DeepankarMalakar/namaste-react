@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Shimmer from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withRestaurantCardOffer } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import useRestaurantCard from "./useRestaurantCard";
 import useOnlineStatus from "./useOnlineStatus";
@@ -9,6 +9,8 @@ const Body = () => {
     // Destructure the returned object from the custom hook
     const { listOfRestaurants, filteredRestaurant, setFilteredRestaurant } = useRestaurantCard();
     const [searchText, setSearchText] = useState("");
+
+    const RestaurantWithOffer = withRestaurantCardOffer(RestaurantCard);
 
     // Handle search functionality
     const handleSearch = () => {
@@ -23,7 +25,7 @@ const Body = () => {
         const topRatedList = listOfRestaurants.filter((res) => res.info.avgRating >= 4.5);
         setFilteredRestaurant(topRatedList);  // Update filtered restaurant state
     };
-    
+
     // Online or offline status using custom hook
     const onlineStatus = useOnlineStatus();
     if (onlineStatus == false) return (<h1>Please Check your internet connection and try again!</h1>)
@@ -56,7 +58,12 @@ const Body = () => {
                             to={`restaurants/${restaurant.info.id}`}
                             style={{ textDecoration: "none" }}
                         >
-                            <RestaurantCard resData={restaurant} />
+                            {restaurant.info.aggregatedDiscountInfoV3 ? (
+                                <RestaurantWithOffer resData={restaurant} />
+                            ) : (
+                                <RestaurantCard resData={restaurant} />
+                            )}
+
                         </Link>
                     ))
                 )}

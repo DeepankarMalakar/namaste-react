@@ -13,7 +13,7 @@ const Header = () => {
     }, [loginBtn]);
 
     return (
-        <div className='header'>
+        <div className='header shadow-md'>
             <div className='logo-container'>
                 <img className='logo' src={LOGO_URL} alt="brand-logo" />
             </div>

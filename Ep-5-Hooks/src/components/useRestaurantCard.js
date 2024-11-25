@@ -14,6 +14,7 @@ const useRestaurantCard = () => {
         const data = await fetch(RESTAURANT_API);
         const jsonData = await data.json();
         const restaurants = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+        console.log(restaurants);
         
         // Set both lists to the fetched restaurants
         setListOfRestaurant(restaurants);
