@@ -31,24 +31,26 @@ const Body = () => {
     if (onlineStatus == false) return (<h1>Please Check your internet connection and try again!</h1>)
 
     return (
-        <div className="body">
-            <div className="filter">
-                <div className="search">
+        <div>
+            <div className="flex justify-between items-center">
+                <div>
                     <input
                         type="text"
-                        className="search-box"
+                        className="w-96 bg-slate-100 shadow-sm py-2 border border-slate-300 rounded-sm ml-4 mt-1"
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}  // Update search text state
                     />
-                    <button className="search-btn" onClick={handleSearch}>
+                    <button onClick={handleSearch} className="bg-red-600 hover:bg-red-500 text-white mx-4 py-2 px-4 rounded-sm">
                         Search
                     </button>
                 </div>
-                <button className="filter-btn" onClick={handleTopRatedFilter}>
+                <div>
+                <button onClick={handleTopRatedFilter} className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md">
                     Top Rated Restaurants
                 </button>
+                </div>
             </div>
-            <div className="res-container">
+        <div className="flex flex-wrap gap-8">
                 {listOfRestaurants.length === 0 ? (
                     <Shimmer />  // Show shimmer while data is loading
                 ) : (
@@ -63,7 +65,6 @@ const Body = () => {
                             ) : (
                                 <RestaurantCard resData={restaurant} />
                             )}
-
                         </Link>
                     ))
                 )}
