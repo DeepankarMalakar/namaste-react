@@ -36,11 +36,11 @@ const Body = () => {
                 <div>
                     <input
                         type="text"
-                        className="w-96 bg-slate-100 shadow-sm py-2 border border-slate-300 rounded-sm ml-4 mt-1"
+                        className="w-96 bg-slate-100 shadow-sm py-2 border border-slate-300 rounded-md ml-4 mt-1"
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}  // Update search text state
                     />
-                    <button onClick={handleSearch} className="bg-red-600 hover:bg-red-500 text-white mx-4 py-2 px-4 rounded-sm">
+                    <button onClick={handleSearch} className="bg-red-600 hover:bg-red-500 text-white mx-4 py-[10px] px-4 rounded-md">
                         Search
                     </button>
                 </div>

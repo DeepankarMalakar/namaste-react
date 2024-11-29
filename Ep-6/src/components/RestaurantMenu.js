@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 // import Accordion from 'react-bootstrap/Accordion';
 import useRestaurantMenu from "./useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
     // const [resInfo, setResInfo] = useState(null);
@@ -43,6 +44,9 @@ const RestaurantMenu = () => {
                     <span className="text-sm font-semibold">{city} - {areaName}</span>
                 </div>
             </div>
+            </div>
+            <div className="text-center">
+                {categories.map((category) => <RestaurantCategory data={category?.card?.card} />)}
             </div>
         </>
     )
