@@ -1,10 +1,19 @@
-const RestaurantCategory = ({data}) => {
+import ItemListAccordian from "./ItemlistAccordian";
+
+const RestaurantCategory = ({ data }) => {
     console.log(data)
     return (
-        <div className="w-[600px] ml-[450px] p-4 border shadow-md rounded-md flex justify-between">
-            <span className="font-semibold">{data.title}</span>
-            <span className="font-semibold">↓</span>
-        </div>
+        <>
+            <div>
+                <div className="w-[600px] ml-[450px] p-4 border shadow-md rounded-md">
+                    <div className="flex justify-between">
+                        <span className="font-bold text-lg">{data.title} ({data.itemCards.length})</span>
+                        <span>↓</span>
+                    </div>
+                    <ItemListAccordian items={data.itemCards} />
+                </div>
+            </div>
+        </>
     )
 }
 
