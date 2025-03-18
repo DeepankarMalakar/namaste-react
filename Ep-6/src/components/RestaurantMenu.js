@@ -4,9 +4,11 @@ import Shimmer from "./Shimmer";
 // import Accordion from 'react-bootstrap/Accordion';
 import useRestaurantMenu from "./useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
     // const [resInfo, setResInfo] = useState(null);
+    const [ showIndex, setShowIndex ] = useState(null);
     const { resId } = useParams();
 
     const resInfo = useRestaurantMenu(resId)    // Created custom hook to fetch menu "useRestaurantMenu"
@@ -33,20 +35,22 @@ const RestaurantMenu = () => {
     return (
         <>
             <div className="flex ml-[450px] my-2">
-            <div className="border w-[600px] p-3 rounded-lg shadow-md">
-                <div>
-                    <span className="text-lg font-bold">{name}</span>
-                </div>
-                <div>
-                    <span className="text-sm font-bold text-green-500">{totalRatingsString} - {avgRatingString}⭐</span>
-                </div>
-                <div>
-                    <span className="text-sm font-semibold">{city} - {areaName}</span>
+                <div className="border w-[600px] p-3 rounded-lg shadow-md">
+                    <div>
+                        <span className="text-lg font-bold">{name}</span>
+                    </div>
+                    <div>
+                        <span className="text-sm font-bold text-green-500">{totalRatingsString} - {avgRatingString}⭐</span>
+                    </div>
+                    <div>
+                        <span className="text-sm font-semibold">{city} - {areaName}</span>
+                    </div>
                 </div>
             </div>
-            </div>
+
+            {/* controlled component */}
             <div className="text-center">
-                {categories.map((category) => <RestaurantCategory key={category?.card?.card?.title} data={category?.card?.card} />)}
+                {categories.map((category, index) => <RestaurantCategory key={category?.card?.card?.title || index} data={category?.card?.card} showItems={index === showIndex} setShowIndex={() => setShowIndex(showIndex === index ? null : index)} />)}
             </div>
         </>
     )
