@@ -1,11 +1,17 @@
 import { LOGO_URL } from "../utils/contents";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
 
 const Header = () => {
     const [loginBtn, setLoginBtn] = useState("Login");
     const onlineStatus = useOnlineStatus();
+    // Using context
+    const {loggedInUser, picture} = useContext(UserContext);
+    // console.log(loggedInUser)
+    // console.log(picture)
 
     useEffect(() => {
         console.log("useEffect called");
@@ -37,6 +43,10 @@ const Header = () => {
                         <li className="text-gray-500">Online: {onlineStatus ? "🟢" : "🔴"}</li>
                     </ul>
                 </nav>
+                <div className="flex items-center space-x-2">
+                    <span className="font-semibold text-lg">{loggedInUser}</span>
+                    <span className="text-2xl">{picture()}</span>
+                </div>
                 <button
                     className="bg-yellow-400 hover:bg-yellow-300 text-white hover:text-black font-bold py-2 px-6 rounded mx-4"
                     onClick={() => setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")}

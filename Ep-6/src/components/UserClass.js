@@ -30,7 +30,7 @@ class UserClass extends React.Component {
     async componentDidMount() {
         // console.log(this.props.name + " " + "Children Component did mount")
         // We make API calls in componentDidMount on class based component, its like the useEffect() hook given us by react.
-        const data = await fetch("https://api.github.com/users/zen");
+        const data = await fetch("https://api.github.com/users/DeepankarMalakar");
         const json = await data.json();
 
         // Here, we updated state variable
@@ -63,7 +63,7 @@ class UserClass extends React.Component {
                     <Card.Text>
                         {bio}
                     </Card.Text>
-                    <Button variant="warning">Profile</Button>
+                    <Button variant="warning" className='bg-blue-700 px-3 py-2 text-white rounded-md mt-3'>Profile</Button>
                 </Card.Body>
             </Card>
         )
