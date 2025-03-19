@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { FaUser } from "react-icons/fa";
 
 
 const Header = () => {
@@ -45,7 +46,7 @@ const Header = () => {
                 </nav>
                 <div className="flex items-center space-x-2">
                     <span className="font-semibold text-lg">{loggedInUser}</span>
-                    <span className="text-2xl">{picture()}</span>
+                    <span className="text-2xl">{<FaUser />}</span>
                 </div>
                 <button
                     className="bg-yellow-400 hover:bg-yellow-300 text-white hover:text-black font-bold py-2 px-6 rounded mx-4"

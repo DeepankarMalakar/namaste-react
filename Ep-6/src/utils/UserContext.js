@@ -1,9 +1,8 @@
 // Creating context to use anywhere in the app
-import { createContext } from "react"
-import { FaUser } from "react-icons/fa";
+import { createContext } from "react";
+
 const UserContext = createContext({
     loggedInUser: "Default User",
-    picture: () => <FaUser />
-})
+});
 
-export default UserContext
+export default UserContext;

@@ -48,7 +48,7 @@ class UserClass extends React.Component {
         const {login, avatar_url, bio, company} = this.state.userInfo
         return (
             <Card style={{ width: '18rem', marginLeft: '1rem', marginTop: '1rem'}}>
-                <Card.Img variant="top" src= {avatar_url}/>
+                <Card.Img variant="top" src= {avatar_url} className='w-52 rounded-md'/>
                 <Card.Body>
                     <Card.Title>{login} - {company}</Card.Title>
 

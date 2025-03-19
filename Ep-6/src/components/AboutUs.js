@@ -24,11 +24,11 @@ class AboutUs extends React.Component {
                         {/* <UserClass name = {"John Dae"} profile = {"Profile"} /> */}  {/*Second child Component*/}
                         {/* <UserClass name = {"John Dae"} profile = {"Profile"} /> */}  {/*Third child Component*/}
                     </div>
-                    <div className="about-description">
-                        <h1><span>Food</span> App</h1>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat doloribus quasi, neque assumenda animi dolores tempore laboriosam optio aspernatur itaque. Facere sapiente eius sed accusantium quia, deserunt modi provident? Voluptatibus sint quas, quo amet nesciunt quia magni numquam nihil tempora asperiores veritatis, eligendi maxime totam sequi repellat officiis saepe voluptas hic voluptatem iste. Quam ad, error nam, consequatur iusto consectetur aliquam quidem natus earum exercitationem eius cum fugit.</span>
+                    <div className="mt-4 ml-3">
+                        <h1 className="text-lg font-bold text-orange-500"><span>Food</span> App</h1>
+                        <span className="text-yellow-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat doloribus quasi, neque assumenda animi dolores tempore laboriosam optio aspernatur itaque. Facere sapiente eius sed accusantium quia, deserunt modi provident? Voluptatibus sint quas, quo amet nesciunt quia magni numquam nihil tempora asperiores veritatis, eligendi maxime totam sequi repellat officiis saepe voluptas hic voluptatem iste. Quam ad, error nam, consequatur iusto consectetur aliquam quidem natus earum exercitationem eius cum fugit.</span>
                     </div>
-                    <div className="font-semibold flex mt-8 ml-2 text-lg">
+                    <div className="font-semibold flex mt-8 ml-3 text-lg">
                     Logged in User: 
                         <UserContext.Consumer>
                             {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import Header from './src/components/Header.js';
 import Body from './src/components/Body.js';
@@ -11,6 +11,7 @@ import Loading from './src/components/Loading.js';
 import RestaurantMenu from './src/components/RestaurantMenu.js';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
+import UserContext from './src/utils/UserContext.js';
 
 // ** Header section
 // - Logo
@@ -37,14 +38,23 @@ const Grocery = lazy(() => import('./src/components/Grocery.js'))   // Grocery
 const About = lazy(() => import('./src/components/AboutUs.js'))    // About us
 
 const AppLayout = () => {
-    // console.log(<Body />)     React's Vitual DOM: Nothing but an object or react component
+    const [userName, setUserName] = useState("Guest");
+
+    // Simulating an API fetch
+    useEffect(() => {
+        const data = { name: "Deepankar Malakar" };
+        setUserName(data.name);
+    }, []);
+
     return (
-        <div className='app'>
-            <Header />
-            <Outlet />
-        </div>
-    )
-}
+        <UserContext.Provider value={{ loggedInUser: userName }}>
+            <div className="app">
+                <Header />
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+    );
+};
 
 const appRoutes = createBrowserRouter(
     [
@@ -58,7 +68,7 @@ const appRoutes = createBrowserRouter(
                 },
                 {
                     path: "/about",
-                    element: <Suspense fallback= {<Loading />}><About /></Suspense>,
+                    element: <Suspense fallback={<Loading />}><About /></Suspense>,
                 },
                 {
                     path: "/contact",
@@ -70,11 +80,12 @@ const appRoutes = createBrowserRouter(
                 },
                 {
                     path: "/grocery",
-                    element: <Suspense fallback= {<Loading />}><Grocery /></Suspense>,
+                    element: <Suspense fallback={<Loading />}><Grocery /></Suspense>,
                 },
                 {
                     path: "/restaurants/:resId",
-                    element: <RestaurantMenu />,
+                    element: <Suspense fallback={<Loading />}><RestaurantMenu /></Suspense>
+                    ,
                 },
             ],
             errorElement: <Error />,
