@@ -80,7 +80,7 @@ const appRoutes = createBrowserRouter(
                 },
                 {
                     path: "/cart",
-                    element: <Cart />,
+                    element: <Suspense fallback={<Loading />}><Cart /></Suspense>,
                 },
                 {
                     path: "/grocery",
