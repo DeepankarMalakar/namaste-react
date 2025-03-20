@@ -12,6 +12,8 @@ import RestaurantMenu from './src/components/RestaurantMenu.js';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import UserContext from './src/utils/UserContext.js';
+import { Provider } from 'react-redux'
+import appStore from './src/utils/appStore.js';
 
 // ** Header section
 // - Logo
@@ -40,19 +42,21 @@ const About = lazy(() => import('./src/components/AboutUs.js'))    // About us
 const AppLayout = () => {
     const [userName, setUserName] = useState("Guest");
 
-    // Simulating an API fetch
+    // Simulating an API fetch for trying usercontext provider
     useEffect(() => {
         const data = { name: "Deepankar Malakar" };
         setUserName(data.name);
     }, []);
 
     return (
-        <UserContext.Provider value={{ loggedInUser: userName }}>
-            <div className="app">
-                <Header />
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{ loggedInUser: userName }}>
+                <div className="app">
+                    <Header />
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 

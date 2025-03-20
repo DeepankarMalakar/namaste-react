@@ -7,7 +7,7 @@ const RestaurantCard = (props) => {
         resData?.info;
 
     return (
-        <div className="w-80 border bg-slate-100 shadow-md rounded-md p-2 ml-4">
+        <div className="w-80 border bg-slate-100 shadow-md rounded-md p-2 ml-8">
             <div className="flex-1">
                 <img
                     src={CDN_URL + cloudinaryImageId}
@@ -23,7 +23,7 @@ const RestaurantCard = (props) => {
                 </div>
             </div>
             <div className="p-2">
-                <button className="bg-yellow-400 hover:bg-yellow-300 px-3 py-2 font-semibold w-full rounded-sm">
+                <button className="bg-orange-500 hover:bg-yellow-400 hover:text-black px-3 py-2 font-semibold w-full rounded-sm text-white">
                     Check Out
                 </button>
             </div>
@@ -38,7 +38,7 @@ export const withRestaurantCardOffer = (RestaurantCard) => {
     return (props) => {
         return (
             <div>
-                <label className="relative bg-black text-white p-1 top-11 left-4">{props.resData.info.aggregatedDiscountInfoV3.header}{props.resData.info.aggregatedDiscountInfoV3.subHeader}</label>
+                <label className="relative bg-black text-white p-1 top-11 left-8">{props.resData.info.aggregatedDiscountInfoV3.header}{props.resData.info.aggregatedDiscountInfoV3.subHeader}</label>
                 <RestaurantCard {...props} />
             </div>
         )
